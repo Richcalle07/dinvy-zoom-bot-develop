@@ -1,0 +1,627 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Process" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ug="clr-namespace:UiPath.GSuite;assembly=UiPath.GSuite" xmlns:uga="clr-namespace:UiPath.GSuite.Activities;assembly=UiPath.GSuite.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="Transaction item to be processed." Name="in_TransactionItem" Type="InArgument(sd:DataRow)" />
+    <x:Property sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data of the process (settings, constants and assets)." Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property sap2010:Annotation.AnnotationText="Datatable of the main and similar companies searched in this runtime." Name="in_Dt_ReportProcess" Type="InArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1201,4942</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ProcessTransaction_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="43">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>Microsoft.VisualBasic.CompilerServices</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities</x:String>
+      <x:String>UiPath.GSuite.Activities.Contracts</x:String>
+      <x:String>UiPath.GSuite</x:String>
+      <x:String>UiPath.GSuite.Contracts</x:String>
+      <x:String>UiPath.GSuite.Activities.Enums</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>Google.Apis.Drive.v3.Data</x:String>
+      <x:String>Google.Apis.Requests</x:String>
+      <x:String>UiPath.GSuite.Activities.Drive</x:String>
+      <x:String>UiPath.GSuite.Activities.Sheets</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="74">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualStudio.Services.Common</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite</AssemblyReference>
+      <AssemblyReference>Google.Apis.Drive.v3</AssemblyReference>
+      <AssemblyReference>Google.Apis.Core</AssemblyReference>
+      <AssemblyReference>Google.Apis</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Invoke major steps of the business process, which are usually implemented by multiple subworkflows.&#xA;&#xA;If a BusinessRuleException is thrown, the transaction is skipped. &#xA;If another kind of exception occurs, the current transaction can be retried. " DisplayName="Process" sap:VirtualizedContainerService.HintSize="1156,4877" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="CompanyPhone" />
+      <Variable x:TypeArguments="x:String" Name="CompanyLinkedinURL" />
+      <Variable x:TypeArguments="x:String" Name="CompanyTwitterURL" />
+      <Variable x:TypeArguments="x:String" Name="CompanyFacebookURL" />
+      <Variable x:TypeArguments="x:String" Name="CompanyWebPageURL" />
+      <Variable x:TypeArguments="x:String" Name="CompanyAddress" />
+      <Variable x:TypeArguments="x:String" Name="CompanyIndustrySector" />
+      <Variable x:TypeArguments="x:String" Name="CompanySizeRange" />
+      <Variable x:TypeArguments="x:String" Name="CompanyAnnualRevenue" />
+      <Variable x:TypeArguments="x:String" Name="CompanyDetailsSection" />
+      <Variable x:TypeArguments="x:String" Name="CompanyExecutivesContactInfo" />
+      <Variable x:TypeArguments="x:String" Name="CompanyTechAttributes" />
+      <Variable x:TypeArguments="x:String" Name="CompanySimilarCompanies" />
+      <Variable x:TypeArguments="x:String" Name="DateOfRetrieval" />
+      <Variable x:TypeArguments="x:String" Name="CompanyEmail" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(of string, string)]" Name="Executive1" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(of string, string)]" Name="Executive2" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Default="[New Dictionary(of string, string)]" Name="Executive3" />
+      <Variable x:TypeArguments="s:String[]" Default="[new String(){&quot;Suntech&quot;,&quot;Panasonic&quot;,&quot;Twitter&quot;, &quot;Victors&quot;, &quot;SONY&quot;, &quot;LG Electronics&quot;, &quot;DeLos&quot; , &quot;Rivers LLC&quot;, &quot;PerezCo&quot;, &quot;Weiss&quot;}]" Name="SimilarCompaniesArray" />
+      <Variable x:TypeArguments="scg:List(x:String)" Name="FilteredSimilarCompanies" />
+      <Variable x:TypeArguments="x:String" Name="CompanySimilarCompaniesLinks" />
+      <Variable x:TypeArguments="s:String[]" Name="SimilarCompaniesLinksArray" />
+      <Variable x:TypeArguments="x:Int32" Name="SimilarCompanyIndex" />
+      <Variable x:TypeArguments="x:String" Name="CompanyName" />
+      <Variable x:TypeArguments="x:Boolean" Name="SearchSimilarCompanies" />
+      <Variable x:TypeArguments="x:String" Default="128453632580-2f70vmbuhu2q4c18e64n5h5sgnm4uguh.apps.googleusercontent.com" Name="ClientID" />
+      <Variable x:TypeArguments="x:String" Default="_aJTsAfGtK9u46c_i72OZ8Nj" Name="SecureID" />
+      <Variable x:TypeArguments="x:String" Name="StatusID" />
+      <Variable x:TypeArguments="x:String" Name="QualifiedLeads" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Assign sap:VirtualizedContainerService.HintSize="1114,60" sap2010:WorkflowViewState.IdRef="Assign_19">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[ClientID]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("GsuiteId").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1114,60" sap2010:WorkflowViewState.IdRef="Assign_20">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[SecureID]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_Config("GsuiteKey").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1114,60" sap2010:WorkflowViewState.IdRef="Assign_21">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[QualifiedLeads]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_config("QualifiedLeads").ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <Assign sap:VirtualizedContainerService.HintSize="1114,60" sap2010:WorkflowViewState.IdRef="Assign_10">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[CompanyName]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[in_TransactionItem(1).ToString]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DinvyZoominfo_SearchCompanyName workflow" sap:VirtualizedContainerService.HintSize="1114,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Apps\Zoominfo\P-1.0_DinvyZoominfo_SearchCompanyName.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CompanyLink">[in_TransactionItem(2).ToString]</InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_CompanyName">[CompanyName]</InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <Assign sap:VirtualizedContainerService.HintSize="1114,60" sap2010:WorkflowViewState.IdRef="Assign_11">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:Boolean">[SearchSimilarCompanies]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DinvyZoominfo_ExtractCompanyData workflow" sap:VirtualizedContainerService.HintSize="1114,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Apps\Zoominfo\P-1.1_DinvyZoominfo_ExtractCompanyData.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CompanyName">[CompanyName.ToString.Replace(" ", "?").Replace("'", "&amp;apos;")]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyPhone">[CompanyPhone]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyLinkedinURL">[CompanyLinkedinURL]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyTwitterURL">[CompanyTwitterURL]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyFacebookURL">[CompanyFacebookURL]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyWebPageURL">[CompanyWebPageURL]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyAddress">[CompanyAddress]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySizeRange">[CompanySizeRange]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyDetailsSection">[CompanyDetailsSection]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyExecutiveData">[CompanyExecutivesContactInfo]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyTechAttributes">[CompanyTechAttributes]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySimilarCompanies">[CompanySimilarCompanies]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive1Data">[Executive1]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive2Data">[Executive2]</OutArgument>
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive3Data">[Executive3]</OutArgument>
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_SearchSimilarCompanies">[SearchSimilarCompanies]</InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_StatusID">[StatusID]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyRevenue">[CompanyAnnualRevenue]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySimilarCompaniesLinks">[CompanySimilarCompaniesLinks]</OutArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyIndustrySector">[CompanyIndustrySector]</OutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <Assign DisplayName="Assign - DateOfRetreival" sap:VirtualizedContainerService.HintSize="1114,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">[DateOfRetrieval]</OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">[Now.ToString("MM/dd/yyyy")]</InArgument>
+      </Assign.Value>
+    </Assign>
+    <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="In the following order:&#xA;&#xA;ID, DateOfRetrieval, Company Name, Similar Companies, Website, Phone, LinkedIN, Facebook, Twitter, Business Email, Address, Size, Revenue, Industry, Tech &amp; Attributes, Company Details, Executive 1 First Name, Executive 1 Last Name, Executive 1 Title, Executive 1 Email, Executive 1 Phone Direct, Executive 1 Phone - Mobile, Executive 1 Phone - HQ, Executive 1 LinkedIN, Executive 2 First Name, Executive 2 Last Name, Executive 2 Title, Executive 2 Email, Executive 2 Phone Direct, Executive 2 Phone - Mobile, Executive 2 Phone - HQ, Executive 2 LinkedIN, Executive 3 First Name, Executive 3 Last Name, Executive 3 Title, Executive 3 Email, Executive 3 Phone Direct, Executive 3 Phone - Mobile, Executive 3 Phone - HQ, Executive 3 LinkedIN&#xA;&#xA;" ArrayRow="[{StatusID, DateOfRetrieval, in_TransactionItem(1).ToString, &quot; - &quot;, CompanyWebPageURL, CompanyPhone,&#x9;CompanyLinkedinURL, CompanyFacebookURL, CompanyTwitterURL, CompanyAddress, CompanySizeRange, CompanyAnnualRevenue, CompanyIndustrySector, CompanyTechAttributes, CompanyDetailsSection, Executive1(&quot;FirstName&quot;), Executive1(&quot;LastName&quot;), Executive1(&quot;Title&quot;), Executive1(&quot;Email&quot;), &quot;'&quot; + Executive1(&quot;PhoneDirect&quot;), &quot;'&quot; +Executive1(&quot;PhoneMobile&quot;), &quot;'&quot; +Executive1(&quot;PhoneHQ&quot;), Executive1(&quot;LinkedIn&quot;), Executive2(&quot;FirstName&quot;), Executive2(&quot;LastName&quot;), Executive2(&quot;Title&quot;), Executive2(&quot;Email&quot;), &quot;'&quot; +Executive2(&quot;PhoneDirect&quot;), &quot;'&quot; +Executive2(&quot;PhoneMobile&quot;), &quot;'&quot; +Executive2(&quot;PhoneHQ&quot;), Executive2(&quot;LinkedIn&quot;), Executive3(&quot;FirstName&quot;), Executive3(&quot;LastName&quot;), Executive3(&quot;Title&quot;), Executive3(&quot;Email&quot;), &quot;'&quot; +Executive3(&quot;PhoneDirect&quot;), &quot;'&quot; +Executive3(&quot;PhoneMobile&quot;), &quot;'&quot; +Executive3(&quot;PhoneHQ&quot;), Executive3(&quot;LinkedIn&quot;)}]" DataTable="[in_Dt_ReportProcess]" DisplayName="Add Data Row - Main company" sap:VirtualizedContainerService.HintSize="1114,499" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:AddDataRow>
+    <If Condition="[CompanySimilarCompanies.Contains(&quot;?&quot;)]" DisplayName="If similarCompanes is not empty" sap:VirtualizedContainerService.HintSize="1114,3270" sap2010:WorkflowViewState.IdRef="If_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Sequence DisplayName="Search similar companies" sap:VirtualizedContainerService.HintSize="1078,3093" sap2010:WorkflowViewState.IdRef="Sequence_15">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <Assign sap:VirtualizedContainerService.HintSize="1036,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[SimilarCompaniesArray]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[CompanySimilarCompanies.Split("?"c).ToArray]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="1036,60" sap2010:WorkflowViewState.IdRef="Assign_6">
+            <Assign.To>
+              <OutArgument x:TypeArguments="s:String[]">[SimilarCompaniesLinksArray]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="s:String[]">[CompanySimilarCompaniesLinks.Split("?"c).ToArray]</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Sequence DisplayName="Search if similar companies are duplicated" sap:VirtualizedContainerService.HintSize="1036,950" sap2010:WorkflowViewState.IdRef="Sequence_9">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="OutputExcelDT" />
+              <Variable x:TypeArguments="x:Int32" Name="indexTest" />
+              <Variable x:TypeArguments="x:String" Name="FilteredSimilarCompaniesLinks" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="434,51" sap2010:WorkflowViewState.IdRef="CommentOut_5">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="376,179" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:ReadRange AddHeaders="True" DataTable="[OutputExcelDT]" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="ReadRange_1" Range="C:D" SheetName="Sheet1" WorkbookPath="Data\Output\OutputCompanies.xlsx" />
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="[ClientID]" CredentialSecret="[SecureID]" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="434,532" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_2" KeyType="JSON" OAuthClient="Custom" Password="notasecret" Services="Unselected">
+              <uga:GSuiteApplicationScope.AuthenticationScopes>
+                <scg:List x:TypeArguments="InArgument(x:String)" Capacity="8">
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.metadata.readonly</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.appdata</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.metadata</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.photos.readonly</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive</InArgument>
+                  <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/spreadsheets</InArgument>
+                </scg:List>
+              </uga:GSuiteApplicationScope.AuthenticationScopes>
+              <uga:GSuiteApplicationScope.Body>
+                <ActivityAction x:TypeArguments="ug:SimpleObjectContainer">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,421" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:String" Name="OutputFileID" />
+                      <Variable x:TypeArguments="x:String" Name="DT_String" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" FirstResultId="[OutputFileID]" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="FindFiles_2" MaxResults="50" SearchExpression="[&quot;name = '&quot;+QualifiedLeads+&quot;'&quot;]" SupportsTeamDrives="False" />
+                    <uga:ReadRange ContinueOnError="{x:Null}" GoogleSpreadsheet="{x:Null}" AuthScopesInvalid="False" DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="334,210" sap2010:WorkflowViewState.IdRef="ReadRange_2" IncludeHeaders="True" Range="C:D" Result="[OutputExcelDT]" SheetName="Sheet1" SpreadsheetId="[OutputFileID]" />
+                  </Sequence>
+                </ActivityAction>
+              </uga:GSuiteApplicationScope.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uga:GSuiteApplicationScope>
+            <Assign sap:VirtualizedContainerService.HintSize="434,64" sap2010:WorkflowViewState.IdRef="Assign_5">
+              <Assign.To>
+                <OutArgument x:TypeArguments="scg:List(x:String)">[FilteredSimilarCompanies]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[(From Element  In SimilarCompaniesArray
+Where Not OutputExcelDT.AsEnumerable.Any(Function(x) x("Similar Companies").ToString.Equals(Element.ToString)) AndAlso 
+Not in_Dt_ReportProcess.AsEnumerable.Any(Function(x) x("SimilarCompanies").ToString.Equals(Element.ToString)) AndAlso
+Not OutputExcelDT.AsEnumerable.Any(Function(x) x("Company Name").ToString.Equals(Element.ToString)) AndAlso 
+Not in_Dt_ReportProcess.AsEnumerable.Any(Function(x) x("CompanyName").ToString.Equals(Element.ToString))).ToList]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,91" sap2010:WorkflowViewState.IdRef="LogMessage_8" Level="Trace" Message="[&quot;Filtered companies: &quot; + String.Join(&quot; - &quot; , FilteredSimilarCompanies)]">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:LogMessage>
+          </Sequence>
+          <Assign sap:VirtualizedContainerService.HintSize="1036,60" sap2010:WorkflowViewState.IdRef="Assign_8">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Int32">[SimilarCompanyIndex]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Int32">0</InArgument>
+            </Assign.Value>
+          </Assign>
+          <Assign sap:VirtualizedContainerService.HintSize="1036,60" sap2010:WorkflowViewState.IdRef="Assign_12">
+            <Assign.To>
+              <OutArgument x:TypeArguments="x:Boolean">[SearchSimilarCompanies]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+            </Assign.Value>
+          </Assign>
+          <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[SimilarCompanyIndex]" DisplayName="For Each similar company" sap:VirtualizedContainerService.HintSize="1036,1611" sap2010:WorkflowViewState.IdRef="ForEach`1_4" Values="[SimilarCompaniesArray]">
+            <ui:ForEach.Body>
+              <ActivityAction x:TypeArguments="x:String">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:String" Name="item" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1000,1477" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="sd:DataRow" Name="rowSimilarCompany" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="958,1385" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <TryCatch.Try>
+                      <If Condition="[item &lt;&gt; &quot;&quot; and item isnot Nothing]" DisplayName="If similar company is not empty" sap:VirtualizedContainerService.HintSize="920,1158" sap2010:WorkflowViewState.IdRef="If_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <If.Then>
+                          <Sequence DisplayName="Similar companies info extraction" sap:VirtualizedContainerService.HintSize="884,981" sap2010:WorkflowViewState.IdRef="Sequence_14">
+                            <Sequence.Variables>
+                              <Variable x:TypeArguments="s:String[]" Name="ArrayToAppend" />
+                            </Sequence.Variables>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <If Condition="[FilteredSimilarCompanies.Any(Function (x) x.ToString.Equals(item.ToString))]" DisplayName="If the company has not been searched before" sap:VirtualizedContainerService.HintSize="842,798" sap2010:WorkflowViewState.IdRef="If_2">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <If.Then>
+                                <Sequence DisplayName="Sequence - Company has not been searched before" sap:VirtualizedContainerService.HintSize="421,640" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="379,91" sap2010:WorkflowViewState.IdRef="LogMessage_6" Message="[&quot;Similar company: &quot; + item]" />
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DinvyZoominfo_SearchCompanyName workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Apps\Zoominfo\P-1.0_DinvyZoominfo_SearchCompanyName.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_CompanyLink">[SimilarCompaniesLinksArray(SimilarCompanyIndex)]</InArgument>
+                                      <InOutArgument x:TypeArguments="x:String" x:Key="io_CompanyName">[item]</InOutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                  <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke DinvyZoominfo_ExtractCompanyData workflow" sap:VirtualizedContainerService.HintSize="379,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Apps\Zoominfo\P-1.1_DinvyZoominfo_ExtractCompanyData.xaml">
+                                    <ui:InvokeWorkflowFile.Arguments>
+                                      <InArgument x:TypeArguments="x:String" x:Key="in_CompanyName">[item.ToString.Replace(" ", "?").Replace("'", "&amp;apos;")]</InArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyPhone">[CompanyPhone]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyLinkedinURL">[CompanyLinkedinURL]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyTwitterURL">[CompanyTwitterURL]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyFacebookURL">[CompanyFacebookURL]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyWebPageURL">[CompanyWebPageURL]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyAddress">[CompanyAddress]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySizeRange">[CompanySizeRange]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyDetailsSection">[CompanyDetailsSection]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyExecutiveData">[CompanyExecutivesContactInfo]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyTechAttributes">[CompanyTechAttributes]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySimilarCompanies">[CompanySimilarCompanies]</OutArgument>
+                                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive1Data">[Executive1]</OutArgument>
+                                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive2Data">[Executive2]</OutArgument>
+                                      <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive3Data">[Executive3]</OutArgument>
+                                      <InArgument x:TypeArguments="x:Boolean" x:Key="in_SearchSimilarCompanies">[SearchSimilarCompanies]</InArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_StatusID">[StatusID]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyRevenue">[CompanyAnnualRevenue]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySimilarCompaniesLinks">[CompanySimilarCompaniesLinks]</OutArgument>
+                                      <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyIndustrySector">[CompanyIndustrySector]</OutArgument>
+                                    </ui:InvokeWorkflowFile.Arguments>
+                                  </ui:InvokeWorkflowFile>
+                                  <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="379,51" sap2010:WorkflowViewState.IdRef="CommentOut_8">
+                                    <ui:CommentOut.Body>
+                                      <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="304,152" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="s:String[]">[ArrayToAppend]</OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[{"","","", item, CompanyWebPageURL, CompanyPhone,	CompanyLinkedinURL, CompanyFacebookURL, CompanyTwitterURL,	CompanyEmail, CompanyAddress, CompanySizeRange, CompanyAnnualRevenue, CompanyIndustrySector, CompanyTechAttributes, CompanyDetailsSection, Executive1("FirstName"), Executive1("LastName"), Executive1("Title"), Executive1("Email"), Executive1("PhoneDirect"), Executive1("PhoneMobile"), Executive1("PhoneHQ"), Executive1("LinkedIn"), Executive2("FirstName"), Executive2("LastName"), Executive2("Title"), Executive2("Email"), Executive2("PhoneDirect"), Executive2("PhoneMobile"), Executive2("PhoneHQ"), Executive2("LinkedIn"), Executive3("FirstName"), Executive3("LastName"), Executive3("Title"), Executive3("Email"), Executive3("PhoneDirect"), Executive3("PhoneMobile"), Executive3("PhoneHQ"), Executive3("LinkedIn")}]</InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                      </Sequence>
+                                    </ui:CommentOut.Body>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:CommentOut>
+                                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="In the following order:&#xA;&#xA;ID, DateOfRetrieval, Company Name, Similar Companies, Website, Phone, LinkedIN, Facebook, Twitter, Business Email, Address, Size, Revenue, Industry, Tech &amp; Attributes, Company Details, Executive 1 First Name, Executive 1 Last Name, Executive 1 Title, Executive 1 Email, Executive 1 Phone Direct, Executive 1 Phone - Mobile, Executive 1 Phone - HQ, Executive 1 LinkedIN, Executive 2 First Name, Executive 2 Last Name, Executive 2 Title, Executive 2 Email, Executive 2 Phone Direct, Executive 2 Phone - Mobile, Executive 2 Phone - HQ, Executive 2 LinkedIN, Executive 3 First Name, Executive 3 Last Name, Executive 3 Title, Executive 3 Email, Executive 3 Phone Direct, Executive 3 Phone - Mobile, Executive 3 Phone - HQ, Executive 3 LinkedIN&#xA;&#xA;" ArrayRow="[{StatusID,&quot;&quot;,&quot;&quot;, item, CompanyWebPageURL, CompanyPhone,&#x9;CompanyLinkedinURL, CompanyFacebookURL, CompanyTwitterURL, CompanyAddress, CompanySizeRange, CompanyAnnualRevenue, CompanyIndustrySector, CompanyTechAttributes, CompanyDetailsSection, Executive1(&quot;FirstName&quot;), Executive1(&quot;LastName&quot;), Executive1(&quot;Title&quot;), Executive1(&quot;Email&quot;), &quot;'&quot; +Executive1(&quot;PhoneDirect&quot;), &quot;'&quot; +Executive1(&quot;PhoneMobile&quot;), &quot;'&quot; +Executive1(&quot;PhoneHQ&quot;), Executive1(&quot;LinkedIn&quot;), Executive2(&quot;FirstName&quot;), Executive2(&quot;LastName&quot;), Executive2(&quot;Title&quot;), Executive2(&quot;Email&quot;), &quot;'&quot; +Executive2(&quot;PhoneDirect&quot;),&quot;'&quot; + Executive2(&quot;PhoneMobile&quot;), &quot;'&quot; +Executive2(&quot;PhoneHQ&quot;), Executive2(&quot;LinkedIn&quot;), Executive3(&quot;FirstName&quot;), Executive3(&quot;LastName&quot;), Executive3(&quot;Title&quot;), Executive3(&quot;Email&quot;), &quot;'&quot; +Executive3(&quot;PhoneDirect&quot;), &quot;'&quot; +Executive3(&quot;PhoneMobile&quot;), &quot;'&quot; +Executive3(&quot;PhoneHQ&quot;), Executive3(&quot;LinkedIn&quot;)}]" DataTable="[in_Dt_ReportProcess]" DisplayName="Add Data Row - new similar company" sap:VirtualizedContainerService.HintSize="379,22" sap2010:WorkflowViewState.IdRef="AddDataRow_3">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:AddDataRow>
+                                </Sequence>
+                              </If.Then>
+                              <If.Else>
+                                <Sequence DisplayName="Sequence - Company has already been searched" sap:VirtualizedContainerService.HintSize="376,345" sap2010:WorkflowViewState.IdRef="Sequence_12">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_10" Level="Warn" Message="[&quot;Similar company:   -  &quot; + item +  &quot; -   is duplicated in running DT_Report (memory)  or Output file (storage)&quot;]" />
+                                  <Assign sap:VirtualizedContainerService.HintSize="334,60" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="s:String[]">[ArrayToAppend]</OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="s:String[]" xml:space="preserve">[{" Duplicated ","","", item + "_ERROR", "","",""	,"" ,"" ,"", "","","" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,"" ,""}]</InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="In the following order:&#xA;&#xA;ID, DateOfRetrieval, Company Name, Similar Companies, Website, Phone, LinkedIN, Facebook, Twitter, Business Email, Address, Size, Revenue, Industry, Tech &amp; Attributes, Company Details, Executive 1 First Name, Executive 1 Last Name, Executive 1 Title, Executive 1 Email, Executive 1 Phone Direct, Executive 1 Phone - Mobile, Executive 1 Phone - HQ, Executive 1 LinkedIN, Executive 2 First Name, Executive 2 Last Name, Executive 2 Title, Executive 2 Email, Executive 2 Phone Direct, Executive 2 Phone - Mobile, Executive 2 Phone - HQ, Executive 2 LinkedIN, Executive 3 First Name, Executive 3 Last Name, Executive 3 Title, Executive 3 Email, Executive 3 Phone Direct, Executive 3 Phone - Mobile, Executive 3 Phone - HQ, Executive 3 LinkedIN&#xA;&#xA;" ArrayRow="[{&quot;DUPLICATED&quot;,&quot;&quot;,&quot;&quot;, item , &quot;&quot;,&quot;&quot;,&quot;&quot; ,&quot;&quot; ,&quot;&quot;, &quot;&quot;,&quot;&quot;,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot;}]" DataTable="[in_Dt_ReportProcess]" DisplayName="Add Data Row Duplicated company" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_4">
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </ui:AddDataRow>
+                                </Sequence>
+                              </If.Else>
+                            </If>
+                            <ui:CommentOut DisplayName="Comment Out (Adicional search simillaries companies)" sap:VirtualizedContainerService.HintSize="842,51" sap2010:WorkflowViewState.IdRef="CommentOut_6">
+                              <ui:CommentOut.Body>
+                                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="530,759" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <uga:GSuiteApplicationScope Account="{x:Null}" ApiKey="{x:Null}" ContinueOnError="{x:Null}" Folder="{x:Null}" KeyPath="{x:Null}" SecureCredentialSecret="{x:Null}" ServiceAccountEmail="{x:Null}" TimeoutMS="{x:Null}" UserEmail="{x:Null}" AuthenticationType="OAuthClientID" CredentialID="[ClientID]" CredentialSecret="[SecureID]" DataStoreLocation="Local disk" DisplayName="GSuite Application Scope" HasDomainWideAccesss="False" sap:VirtualizedContainerService.HintSize="488,667" sap2010:WorkflowViewState.IdRef="GSuiteApplicationScope_1" KeyType="JSON" OAuthClient="Custom" Password="notasecret" Services="Unselected">
+                                    <uga:GSuiteApplicationScope.AuthenticationScopes>
+                                      <scg:List x:TypeArguments="InArgument(x:String)" Capacity="8">
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.readonly</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.file</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.metadata.readonly</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.appdata</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.metadata</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive.photos.readonly</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/drive</InArgument>
+                                        <InArgument x:TypeArguments="x:String">https://www.googleapis.com/auth/spreadsheets</InArgument>
+                                      </scg:List>
+                                    </uga:GSuiteApplicationScope.AuthenticationScopes>
+                                    <uga:GSuiteApplicationScope.Body>
+                                      <ActivityAction x:TypeArguments="ug:SimpleObjectContainer">
+                                        <ActivityAction.Argument>
+                                          <DelegateInArgument x:TypeArguments="ug:SimpleObjectContainer" Name="GSuiteScope" />
+                                        </ActivityAction.Argument>
+                                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="454,556" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+                                          <ui:CommentOut.Body>
+                                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="418,478" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,386" sap2010:WorkflowViewState.IdRef="Sequence_18">
+                                                <Sequence.Variables>
+                                                  <Variable x:TypeArguments="x:String" Name="OutputFileID" />
+                                                </Sequence.Variables>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                                <uga:FindFiles ContinueOnError="{x:Null}" DriveTarget="{x:Null}" Result="{x:Null}" AuthScopesInvalid="False" DisplayName="Find Files and Folders" FirstResultId="[OutputFileID]" sap:VirtualizedContainerService.HintSize="334,79" sap2010:WorkflowViewState.IdRef="FindFiles_1" MaxResults="50" SearchExpression="[&quot;name = '&quot;+QualifiedLeads+&quot;'&quot;]" SupportsTeamDrives="False" />
+                                                <uga:AppendRow ContinueOnError="{x:Null}" AuthScopesInvalid="False" CellReference="A1" DisplayName="Append Row" sap:VirtualizedContainerService.HintSize="334,175" sap2010:WorkflowViewState.IdRef="AppendRow_1" Row="[ArrayToAppend]" SheetName="Sheet1" SpreadsheetId="[OutputFileID]" />
+                                              </Sequence>
+                                            </Sequence>
+                                          </ui:CommentOut.Body>
+                                        </ui:CommentOut>
+                                      </ActivityAction>
+                                    </uga:GSuiteApplicationScope.Body>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </uga:GSuiteApplicationScope>
+                                </Sequence>
+                              </ui:CommentOut.Body>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:CommentOut>
+                          </Sequence>
+                        </If.Then>
+                      </If>
+                    </TryCatch.Try>
+                    <TryCatch.Catches>
+                      <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="924,21" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ActivityAction x:TypeArguments="s:Exception">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                          </ActivityAction.Argument>
+                          <Sequence DisplayName="Sequence - error retreiveing similar company ifo" sap:VirtualizedContainerService.HintSize="376,176" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_11" Level="Error" Message="[String.Format(&quot;There was an error retreiving this company ( {0} ). Exception of type: {1}&quot;, item, exception.ToString)]" />
+                            <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="In the following order:&#xA;&#xA;ID, DateOfRetrieval, Company Name, Similar Companies, Website, Phone, LinkedIN, Facebook, Twitter, Business Email, Address, Size, Revenue, Industry, Tech &amp; Attributes, Company Details, Executive 1 First Name, Executive 1 Last Name, Executive 1 Title, Executive 1 Email, Executive 1 Phone Direct, Executive 1 Phone - Mobile, Executive 1 Phone - HQ, Executive 1 LinkedIN, Executive 2 First Name, Executive 2 Last Name, Executive 2 Title, Executive 2 Email, Executive 2 Phone Direct, Executive 2 Phone - Mobile, Executive 2 Phone - HQ, Executive 2 LinkedIN, Executive 3 First Name, Executive 3 Last Name, Executive 3 Title, Executive 3 Email, Executive 3 Phone Direct, Executive 3 Phone - Mobile, Executive 3 Phone - HQ, Executive 3 LinkedIN&#xA;&#xA;" ArrayRow="[{&quot; ERROR &quot;,&quot;&quot;,&quot;&quot;, item, &quot;&quot;,&quot;&quot;,&quot;&quot; ,&quot;&quot; ,&quot;&quot;, &quot;&quot;,&quot;&quot;,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot; ,&quot;&quot;}]" DataTable="[in_Dt_ReportProcess]" DisplayName="Add Data Row" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="AddDataRow_5">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsAnnotationDocked">False</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                            </ui:AddDataRow>
+                          </Sequence>
+                        </ActivityAction>
+                      </Catch>
+                    </TryCatch.Catches>
+                  </TryCatch>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEach.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEach>
+        </Sequence>
+      </If.Then>
+    </If>
+  </Sequence>
+</Activity>

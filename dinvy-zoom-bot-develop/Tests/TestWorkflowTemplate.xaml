@@ -1,0 +1,299 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="TestWorkflowTemplate" this:TestWorkflowTemplate.in_CompanyName="Microsogfggggggft" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_CompanyName" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1201,2390</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>TestWorkflowTemplate_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="50">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="48">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.GSuite.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="Template workflow used to create tests for workflows in the process.&#xA;Create a new test workflow by copying and renaming this file." DisplayName="Test Template" sap:VirtualizedContainerService.HintSize="596,2225" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:Object)" sap2010:Annotation.AnnotationText="Dictionary structure to store configuration data." Name="Config" />
+      <Variable x:TypeArguments="x:String" Default="Amazon" Name="CompanyName" />
+      <Variable x:TypeArguments="x:String" Name="OutputText" />
+      <Variable x:TypeArguments="x:Boolean" Name="ExistsResultCompany" />
+      <Variable x:TypeArguments="x:String" Name="variable2" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke P-1.0_DinvyZoominfo_SearchCompanyName workflow" sap:VirtualizedContainerService.HintSize="554,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Apps\Zoominfo\P-1.0_DinvyZoominfo_SearchCompanyName.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_CompanyLink">
+          <Literal x:TypeArguments="x:String">sony.com</Literal>
+        </InArgument>
+        <InOutArgument x:TypeArguments="x:String" x:Key="io_CompanyName">
+          <mva:VisualBasicReference x:TypeArguments="x:String" ExpressionText="CompanyName" />
+        </InOutArgument>
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Invoke P-1.1.1_DinvyZoominfo_GetAllCompanyData workflow" sap:VirtualizedContainerService.HintSize="554,112" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Apps\Zoominfo\P-1.1.1_DinvyZoominfo_GetAllCompanyData.xaml">
+      <ui:InvokeWorkflowFile.Arguments>
+        <InArgument x:TypeArguments="x:String" x:Key="in_FoundCompanyName">
+          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="CompanyName" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyPhone" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyLinkedinURL" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyTwitterURL" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyFacebookURL" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyWebPageURL" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyAddress" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySizeRange" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyRevenue" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyDetailsSection" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyExecutiveData" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyTechAttributes" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySimilarCompanies" />
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive1Data" />
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive2Data" />
+        <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)" x:Key="out_Executive3Data" />
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanySimilarCompaniesLinks" />
+        <InArgument x:TypeArguments="x:Boolean" x:Key="in_SearchSimilarCompanies">
+          <Literal x:TypeArguments="x:Boolean" Value="True" />
+        </InArgument>
+        <OutArgument x:TypeArguments="x:String" x:Key="out_CompanyIndustrySector" />
+      </ui:InvokeWorkflowFile.Arguments>
+    </ui:InvokeWorkflowFile>
+    <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="554,1787" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+      <ui:CommentOut.Body>
+        <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="518,1709" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:UiElementExists DisplayName="Element Exists 'Similar companies'" Exists="[SimilarCompaniesExist]" sap:VirtualizedContainerService.HintSize="476,106" sap2010:WorkflowViewState.IdRef="UiElementExists_2">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="62f09e89-37da-41e2-b491-69d1eefd3cbc" InformativeScreenshot="2ba7ff96204ce5ddb616cd2be6ac7ede" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-company-search-result-row&amp;gt;zi-search-result-row&amp;gt;zi-profile-content&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;zi-row-secondary-content&amp;gt;div&amp;gt;div' parentid='app-root' tag='DIV' /&gt;" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:UiElementExists.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:UiElementExists>
+          <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" ContinueOnError="True" DisplayName="Click 'Similar companies'" sap:VirtualizedContainerService.HintSize="476,106" sap2010:WorkflowViewState.IdRef="Click_1" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="b8931bca-046c-4b37-8599-87b29d4f6814" InformativeScreenshot="165700a57523e1b0d040f10c73f9cbd5" Selector="&lt;webctrl parentid='Similar-Companies-' tag='SPAN' /&gt;" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:Click>
+          <ui:Click AlterIfDisabled="{x:Null}" CursorMotionType="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Similar company'" sap:VirtualizedContainerService.HintSize="476,106" sap2010:WorkflowViewState.IdRef="Click_2" KeyModifiers="None" MouseButton="BTN_LEFT" SimulateClick="True">
+            <ui:Click.CursorPosition>
+              <ui:CursorPosition Position="Center">
+                <ui:CursorPosition.OffsetX>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetX>
+                <ui:CursorPosition.OffsetY>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:CursorPosition.OffsetY>
+              </ui:CursorPosition>
+            </ui:Click.CursorPosition>
+            <ui:Click.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="df4732d3-696e-4fef-9157-c361da464e4f" InformativeScreenshot="234f20fea23d5c95a26c549a5f7e7888" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl aaname='*{1}*' parentid='app-root' tag='DIV' css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-company-search-result-row&amp;gt;zi-search-result-row&amp;gt;zi-profile-content&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;zi-row-secondary-content&amp;gt;div&amp;gt;div&amp;gt;zi-competitor-card&amp;gt;div&amp;gt;div&amp;gt;a&amp;gt;div' parentclass='ng-star-inserted' /&gt;&quot;, in_FoundCompanyName, SimilarCompanyAmper)]">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:Click.Target>
+          </ui:Click>
+          <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'SPAN'" sap:VirtualizedContainerService.HintSize="476,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+            <ui:GetValue.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="8fb4ae7d-9c97-437c-8ad7-3ccab5ae3e48" InformativeScreenshot="eafbc407e64653262f1601e8c68fe784" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}*' /&gt;&lt;webctrl parentid='zi-dooten-text-*.*' tag='SPAN' class='dotten-text-content' css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-company-search-result-row&amp;gt;zi-search-result-row&amp;gt;zi-company-classic-view&amp;gt;zi-row&amp;gt;div&amp;gt;div&amp;gt;zi-row-group&amp;gt;zi-row-group&amp;gt;div&amp;gt;zi-dotten-text&amp;gt;div&amp;gt;div&amp;gt;span' parentclass='mat-tooltip-trigger tooltip' /&gt;&quot;, FirstSimilarCompanyName)]">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:GetValue.Target>
+            <ui:GetValue.Value>
+              <OutArgument x:TypeArguments="x:String">[SimilarCompaniesLinks]</OutArgument>
+            </ui:GetValue.Value>
+          </ui:GetValue>
+          <ui:UiElementExists DisplayName="Element Exists 'Similar companies'" Exists="[SimilarCompaniesExist]" sap:VirtualizedContainerService.HintSize="476,106" sap2010:WorkflowViewState.IdRef="UiElementExists_3">
+            <ui:UiElementExists.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="62f09e89-37da-41e2-b491-69d1eefd3cbc" InformativeScreenshot="2ba7ff96204ce5ddb616cd2be6ac7ede" Selector="[String.Format(&quot;&lt;html app='chrome.exe' title='{0}' /&gt;&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-company-search-result-row&amp;gt;zi-search-result-row&amp;gt;zi-profile-content&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;zi-row-secondary-content&amp;gt;div&amp;gt;div&amp;gt;div' parentid='app-root' tag='DIV' /&gt;&quot;, in_FoundCompanyName)]" TimeoutMS="5000">
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:UiElementExists.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:UiElementExists>
+          <ui:GetAttribute ContinueOnError="{x:Null}" Attribute="text" DisplayName="Get Attribute 'details '" sap:VirtualizedContainerService.HintSize="476,134" sap2010:WorkflowViewState.IdRef="GetAttribute_1">
+            <ui:GetAttribute.Result>
+              <OutArgument x:TypeArguments="x:String">[out_CompanyDetailsSection]</OutArgument>
+            </ui:GetAttribute.Result>
+            <ui:GetAttribute.Target>
+              <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="84c62205-69a8-4c34-9f00-1cb0684d726c" InformativeScreenshot="cd548f9c3c15091d99937a0a44939de9" Selector="&lt;html app='chrome.exe' title='Apple' /&gt;&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-company-profile-wrapper&amp;gt;zi-profile-content-v2&amp;gt;div&amp;gt;div&amp;gt;zi-company-overview&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;zi-text&amp;gt;span' parentid='app-root' tag='SPAN' /&gt;">
+                <ui:Target.TimeoutMS>
+                  <InArgument x:TypeArguments="x:Int32" />
+                </ui:Target.TimeoutMS>
+                <ui:Target.WaitForReady>
+                  <InArgument x:TypeArguments="ui:WaitForReady" />
+                </ui:Target.WaitForReady>
+              </ui:Target>
+            </ui:GetAttribute.Target>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:GetAttribute>
+          <Sequence DisplayName="Data Scraping" sap:VirtualizedContainerService.HintSize="476,713" sap2010:WorkflowViewState.IdRef="Sequence_8">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Default="[New System.Data.DataTable]" Name="ExtractDataTable" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser 'Apple Page'" sap:VirtualizedContainerService.HintSize="434,475" sap2010:WorkflowViewState.IdRef="BrowserScope_2" InformativeScreenshot="f4d2d18c0d756b8ba406feb1210b1d7f" Selector="&lt;html app='chrome.exe' title='Apple' /&gt;">
+              <ui:BrowserScope.Body>
+                <ActivityAction x:TypeArguments="x:Object">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,329" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:ExtractData DelayBetweenPagesMS="{x:Null}" NextLinkSelector="{x:Null}" ContinueOnError="True" DataTable="[ExtractDataTable]" DisplayName="Extract Structured Data 'DIV'" ExtractMetadata="&lt;extract&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='zi-recommended-lead-card' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='zi-dotten-text' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="ExtractData_2" MaxNumberOfResults="100" SimulateClick="True">
+                      <ui:ExtractData.Target>
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="6c827f76-7275-4d26-bbd6-fcaf592df42b" InformativeScreenshot="839f460534dba96a47a522d94305ad4c" Selector="&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-company-profile-wrapper&amp;gt;zi-profile-content-v2&amp;gt;div&amp;gt;div&amp;gt;zi-company-overview&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;zi-top-executives-v2&amp;gt;div' parentid='app-root' tag='DIV' /&gt;" WaitForReady="COMPLETE">
+                          <ui:Target.TimeoutMS>
+                            <InArgument x:TypeArguments="x:Int32" />
+                          </ui:Target.TimeoutMS>
+                        </ui:Target>
+                      </ui:ExtractData.Target>
+                    </ui:ExtractData>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_3" Message="[&quot;&quot;]" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:BrowserScope.Body>
+            </ui:BrowserScope>
+            <ui:UiElementExists Exists="{x:Null}" DisplayName="Element Exists 'I'" sap:VirtualizedContainerService.HintSize="434,106" sap2010:WorkflowViewState.IdRef="UiElementExists_4">
+              <ui:UiElementExists.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="94cce89a-9912-4964-a178-b84f69cab5d7" InformativeScreenshot="3fd0caf3533c8023adf14c9aa99d5e18" Selector="&lt;html app='chrome.exe' title='*' /&gt;&lt;webctrl href='https://www.linkedin.com/*' css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-person-profile-wrapper&amp;gt;zi-person-classic-view&amp;gt;zi-row&amp;gt;div&amp;gt;div&amp;gt;zi-row-group&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;a' /&gt;&lt;webctrl css-selector='body&amp;gt;app-root&amp;gt;div&amp;gt;div&amp;gt;zi-profile-page&amp;gt;zi-page-template&amp;gt;div&amp;gt;div&amp;gt;zi-page-content&amp;gt;div&amp;gt;zi-person-profile-wrapper&amp;gt;zi-person-classic-view&amp;gt;zi-row&amp;gt;div&amp;gt;div&amp;gt;zi-row-group&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;a&amp;gt;i' parentid='app-root' tag='I' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:UiElementExists.Target>
+            </ui:UiElementExists>
+          </Sequence>
+        </Sequence>
+      </ui:CommentOut.Body>
+    </ui:CommentOut>
+  </Sequence>
+</Activity>
